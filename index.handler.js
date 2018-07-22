@@ -23,7 +23,7 @@ exports.handler = (event, context, callback) => {
                 "ip_address": event.requestContext.identity.sourceIp,
             }
             var name = event.queryStringParameters.name;
-            if (name != "") {
+            if (name != undefined && name != "") {
                 res['greeting'] = "Hey there, " + name + "! You're looking great today! :)";
             }
             done("", res);
