@@ -20,11 +20,11 @@ exports.handler = (event, context, callback) => {
             break;
         case 'GET':
             var res = {
-                "ip_address": `"${event.requestContext.identity.sourceIp}"`,
+                "ip_address": event.requestContext.identity.sourceIp,
             }
-            var name = `"${event.queryStringParameters.name}"`;
+            var name = event.queryStringParameters.name;
             if (name != "") {
-                res['greeting'] = `Hey there, "${name}"!`;
+                res['greeting'] = "Hey there, " + name + "! You're looking great today! :)";
             }
             done("", res);
             break;
