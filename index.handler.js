@@ -24,7 +24,9 @@ exports.handler = (event, context, callback) => {
             }
             try {
                 var name = event.queryStringParameters.name;
-                res['greeting'] = "Hey there, " + name + "! You're looking great today! :)";
+                if (name != undefined && name != "") {
+                    res['greeting'] = "Hey there, " + name + "! You're looking great today! :)";
+                }
             } catch (e) {
                 console.log(e);
             }
