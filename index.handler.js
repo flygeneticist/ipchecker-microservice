@@ -22,9 +22,11 @@ exports.handler = (event, context, callback) => {
             var res = {
                 "ip_address": event.requestContext.identity.sourceIp,
             }
-            var name = event.queryStringParameters.name;
-            if (name != undefined && name != "") {
+            try {
+                var name = event.queryStringParameters.name;
                 res['greeting'] = "Hey there, " + name + "! You're looking great today! :)";
+            } catch (e) {
+                console.log(e);
             }
             done("", res);
             break;
